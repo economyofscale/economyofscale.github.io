@@ -3,6 +3,33 @@
 (function () {
   "use strict";
 
+  // ----- Hero video: play once, hold the last frame -----
+  // If playback can't happen (autoplay blocked, decode/network error, or the
+  // user prefers reduced motion), swap in the last-frame image so the hero
+  // never looks empty.
+  var heroVideo = document.querySelector(".hero__media video");
+  if (heroVideo) {
+    var heroFallback = function () {
+      if (!heroVideo.parentNode) return;
+      var img = document.createElement("img");
+      img.src = heroVideo.getAttribute("poster");
+      img.alt = "";
+      heroVideo.replaceWith(img);
+    };
+
+    heroVideo.addEventListener("error", heroFallback);
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      heroFallback();
+    } else {
+      heroVideo.muted = true; // some browsers ignore the attribute for autoplay policy
+      var playAttempt = heroVideo.play();
+      if (playAttempt && typeof playAttempt.catch === "function") {
+        playAttempt.catch(heroFallback);
+      }
+    }
+  }
+
   // ----- Mobile nav toggle -----
   var toggle = document.querySelector(".nav__toggle");
   var menu = document.getElementById("nav-menu");

@@ -207,10 +207,38 @@ h1, h2, h3 {
   flex: none;
 }
 
-.hero__name {
-  font-size: clamp(3.25rem, 11vw, 7.5rem);
-  letter-spacing: -0.02em;
+/* Video replaces the visible h1; footprint derived from the old two-line
+   clamp(3.25rem, 11vw, 7.5rem) name: height ≈ 2 lines × 1.1 line-height,
+   width = height × the video's 1920/966 aspect. */
+.hero__media {
+  width: min(100%, clamp(14.2rem, 48vw, 32.8rem));
   margin-bottom: 2rem;
+}
+
+.hero__media video,
+.hero__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1920 / 966;
+  /* the source encode has an ~8px dark column on its right edge */
+  clip-path: inset(0 0.6% 0 0);
+  /* the video's near-white ground isn't exactly --bg; darken makes any
+     pixel lighter than the page dissolve into it, leaving only the art */
+  mix-blend-mode: darken;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }
 
 .hero__intro {
