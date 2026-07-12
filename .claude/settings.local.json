@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem assets\\\\headshot.jpg, assets\\\\cv-daniel-fixemer.pdf | Select-Object Name, @{n='MB';e={[math]::Round\\($_.Length/1MB,2\\)}})",
+      "PowerShell(Get-ChildItem *)",
+      "PowerShell(Remove-Item *)"
+    ]
+  }
+}
