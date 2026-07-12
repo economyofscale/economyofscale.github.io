@@ -207,11 +207,19 @@ h1, h2, h3 {
   flex: none;
 }
 
+/* Dash draws in from the left once the eyebrow has revealed */
+.js .hero__eyebrow::before {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s ease 0.45s;
+}
+.js .hero__eyebrow.is-visible::before { transform: scaleX(1); }
+
 /* Video replaces the visible h1; footprint derived from the old two-line
    clamp(3.25rem, 11vw, 7.5rem) name: height ≈ 2 lines × 1.1 line-height,
    width = height × the video's 1920/966 aspect. */
 .hero__media {
-  width: min(100%, clamp(14.2rem, 48vw, 32.8rem));
+  width: min(100%, clamp(17rem, 58vw, 39.5rem));
   margin-bottom: 2rem;
 }
 
@@ -857,5 +865,6 @@ h1, h2, h3 {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .js .reveal { opacity: 1; transform: none; transition: none; }
+  .js .hero__eyebrow::before { transform: none; transition: none; }
   .hero__scroll-line { animation: none; }
 }
