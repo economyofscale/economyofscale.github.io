@@ -801,22 +801,24 @@ h1, h2, h3 {
 
 /* ---------- Reveal animation ---------- */
 
-.reveal {
+/* Hidden-by-default is opt-in via the .js class set in <head>,
+   so content stays visible if JavaScript is unavailable. */
+.js .reveal {
   opacity: 0;
   transform: translateY(18px);
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
-.reveal[data-reveal-delay="1"] { transition-delay: 0.12s; }
-.reveal[data-reveal-delay="2"] { transition-delay: 0.24s; }
-.reveal[data-reveal-delay="3"] { transition-delay: 0.36s; }
+.js .reveal[data-reveal-delay="1"] { transition-delay: 0.12s; }
+.js .reveal[data-reveal-delay="2"] { transition-delay: 0.24s; }
+.js .reveal[data-reveal-delay="3"] { transition-delay: 0.36s; }
 
-.reveal.is-visible {
+.js .reveal.is-visible {
   opacity: 1;
   transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal { opacity: 1; transform: none; transition: none; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
   .hero__scroll-line { animation: none; }
 }
