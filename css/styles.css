@@ -84,13 +84,22 @@ h1, h2, h3 {
 }
 
 .nav__mark {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 600;
-  color: var(--ink);
-  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
 }
-.nav__mark:hover { text-decoration: none; color: var(--accent-ink); }
+
+.nav__mark img {
+  height: 2.75rem;
+  width: auto;
+  transition: opacity 0.2s ease;
+}
+
+.nav__mark:hover { text-decoration: none; }
+.nav__mark:hover img { opacity: 0.7; }
+
+@media (max-width: 47.99em) {
+  .nav__mark img { height: 2.4rem; }
+}
 
 .nav__menu {
   display: flex;
