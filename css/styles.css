@@ -184,6 +184,10 @@ h1, h2, h3 {
   justify-content: center;
   position: relative;
   padding-top: var(--nav-height);
+  /* reserve the zone occupied by the absolutely-positioned scroll
+     indicator (bottom 2.25rem + ~4rem of line/text, plus breathing
+     room) so centered content can never overlap it on short viewports */
+  padding-bottom: 7.5rem;
 }
 
 .hero__inner { width: 100%; }
