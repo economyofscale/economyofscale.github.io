@@ -653,22 +653,51 @@ h1, h2, h3 {
 .projects { border-top: 1px solid var(--line); }
 
 .project {
-  padding-top: clamp(2rem, 5vw, 3rem);
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  padding-top: clamp(2.5rem, 6vw, 4rem);
   border-top: 1px solid var(--line);
-  margin-top: clamp(2rem, 5vw, 3rem);
+  margin-top: clamp(2.5rem, 6vw, 4rem);
 }
 .project:first-of-type { border-top: 0; margin-top: 0; padding-top: 0; }
 
-.project__client {
-  font-size: clamp(1.4rem, 3vw, 1.8rem);
-  margin-bottom: 1.5rem;
+/* Alternate direction: even case studies put the client name on the right */
+.project:nth-of-type(even) {
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+}
+.project:nth-of-type(even) .project__intro { order: 2; }
+
+.project__intro {
+  align-self: start;
+  position: sticky;
+  top: calc(var(--nav-height) + 2rem);
 }
 
-.project__cols {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(1.5rem, 4vw, 2.5rem);
+.project__kicker {
+  margin: 0 0 1rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
 }
+
+.project__client {
+  font-size: clamp(2.1rem, 4.5vw, 3.1rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+}
+
+.project__tagline {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--ink-soft);
+  max-width: 26em;
+}
+
+.project__block + .project__block { margin-top: clamp(1.4rem, 3vw, 2rem); }
 
 .project__label {
   font-family: var(--font-body);
@@ -680,26 +709,48 @@ h1, h2, h3 {
   margin: 0 0 0.6em;
 }
 
-.project__col p {
+.project__block p {
   margin: 0;
   font-size: 0.95rem;
   color: var(--ink-soft);
 }
 
 .project__quote {
-  margin: clamp(1.75rem, 4vw, 2.5rem) 0 0;
-  border-left: 2px solid var(--accent);
-  padding-left: clamp(1.25rem, 3vw, 2rem);
-  max-width: 44em;
+  position: relative;
+  margin: clamp(2rem, 4.5vw, 3rem) 0 0;
+  padding-left: clamp(2.5rem, 5vw, 3.25rem);
+}
+
+/* Oversized accent quotation mark */
+.project__quote::before {
+  content: "\201C";
+  position: absolute;
+  left: -0.04em;
+  top: -0.12em;
+  font-family: var(--font-display);
+  font-size: clamp(3.25rem, 7vw, 4.5rem);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--accent);
 }
 
 .project__quote p {
-  margin: 0 0 0.6em;
+  margin: 0 0 0.7em;
   font-family: var(--font-display);
-  font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+  font-size: clamp(1.25rem, 2.6vw, 1.55rem);
   font-weight: 500;
-  line-height: 1.5;
+  line-height: 1.45;
   color: var(--ink);
+}
+
+.project__quote .project__quote-note {
+  margin: 0 0 0.6rem;
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
 }
 
 .project__quote cite {
@@ -708,8 +759,56 @@ h1, h2, h3 {
   color: var(--ink-soft);
 }
 
+/* Client roster — deliberately quieter than the case studies above */
+.roster {
+  margin-top: clamp(3rem, 7vw, 4.5rem);
+  padding-top: clamp(2rem, 5vw, 3rem);
+  border-top: 1px solid var(--line);
+}
+
+.roster__title {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 1.25rem;
+}
+
+.roster__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+  gap: 0.75rem;
+}
+
+.roster__card {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  text-align: center;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.roster__card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
 @media (max-width: 47.99em) {
-  .project__cols { grid-template-columns: 1fr; }
+  .project,
+  .project:nth-of-type(even) {
+    grid-template-columns: 1fr;
+  }
+  .project:nth-of-type(even) .project__intro { order: 0; }
+  .project__intro { position: static; }
+  .project__client { margin-bottom: 0.75rem; }
 }
 
 /* ---------- Contact (dark band) ---------- */
