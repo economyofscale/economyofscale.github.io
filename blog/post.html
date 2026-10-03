@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Daniel Fixemer</title>
+  <meta name="description" content="Articles by Daniel Fixemer on OneStream EPM, FP&A, and AI.">
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <!-- canonical is set to the LinkedIn original by the script below -->
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="nav__mark" href="../index.html#top" aria-label="Daniel Fixemer — back to home">
+        <img src="../assets/logo-web.png" alt="DF logo" width="660" height="434">
+      </a>
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#blog">Blog</a></li>
+        <li><a class="nav__cta" href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <article class="post container" id="post-article" aria-live="polite">
+      <!-- rendered by the script below -->
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© 2026 Daniel Fixemer</p>
+      <a class="post__back-foot" href="../index.html#blog">← All articles</a>
+    </div>
+  </footer>
+
+  <script src="posts.js"></script>
+  <script>
+    (function () {
+      "use strict";
+      var mount = document.getElementById("post-article");
+      var posts = window.BLOG_POSTS || [];
+      var slug = new URLSearchParams(location.search).get("slug");
+      var post = posts.filter(function (p) { return p.slug === slug; })[0];
+
+      if (!post) {
+        mount.innerHTML =
+          '<p class="post__meta">Article not found</p>' +
+          '<h1 class="post__title">This article doesn’t exist</h1>' +
+          '<p class="post__intro">The link may be out of date.</p>' +
+          '<p class="post__actions"><a class="button button--primary" href="../index.html#blog">Back to all articles</a></p>';
+        return;
+      }
+
+      // Paths in posts.js are relative to the site root; this page lives in
+      // /blog/, so prefix with "../".
+      var img = post.image ? "../" + post.image : "";
+
+      var fmtDate = function (iso) {
+        var d = new Date(iso + "T00:00:00");
+        if (isNaN(d)) return iso;
+        return d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+      };
+      var meta = fmtDate(post.date) + (post.readingTime ? " · " + post.readingTime : "");
+
+      document.title = post.title + " — Daniel Fixemer";
+
+      // canonical → LinkedIn original (keeps SEO authority on LinkedIn)
+      if (post.linkedInUrl) {
+        var link = document.createElement("link");
+        link.rel = "canonical";
+        link.href = post.linkedInUrl;
+        document.head.appendChild(link);
+      }
+
+      var linkedInBtn = post.linkedInUrl
+        ? '<a class="button button--primary" href="' + post.linkedInUrl + '" target="_blank" rel="noopener">Read on LinkedIn ↗</a>'
+        : "";
+
+      mount.innerHTML =
+        '<a class="post__back" href="../index.html#blog">← All articles</a>' +
+        '<p class="post__meta">' + meta + '</p>' +
+        '<h1 class="post__title">' + post.title + '</h1>' +
+        (post.intro ? '<p class="post__intro">' + post.intro + '</p>' : "") +
+        (img ? '<figure class="post__cover"><img src="' + img + '" alt="' + (post.imageAlt || "") + '"></figure>' : "") +
+        '<div class="post__body">' + (post.body || "") + '</div>' +
+        '<div class="post__actions">' + linkedInBtn +
+          '<a class="button button--ghost" href="../index.html#blog">Back to all articles</a>' +
+        '</div>';
+    })();
+  </script>
+</body>
+</html>

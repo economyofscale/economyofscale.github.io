@@ -28,6 +28,7 @@
         <li><a href="#skills">Skills</a></li>
         <li><a href="#certifications">Certifications</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#blog">Blog</a></li>
         <li><a class="nav__cta" href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -540,11 +541,32 @@
       </div>
     </section>
 
+    <!-- ============ BLOG ============ -->
+    <section class="section blog" id="blog">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="section__index">06</span>
+          <h2 class="section__title">My Blog</h2>
+        </header>
+        <p class="blog__lede reveal">
+          Short reads on OneStream EPM, FP&amp;A, and where finance meets AI —
+          mirrored from my LinkedIn articles.
+        </p>
+        <div class="blog__grid reveal" id="blog-grid" data-reveal-delay="1">
+          <!-- cards rendered from blog/posts.js by js/blog.js -->
+        </div>
+        <p class="blog__all reveal" data-reveal-delay="2">
+          <a href="https://www.linkedin.com/in/daniel-fixemer-855932175/recent-activity/articles/"
+             target="_blank" rel="noopener">See all articles on LinkedIn ↗</a>
+        </p>
+      </div>
+    </section>
+
     <!-- ============ CONTACT ============ -->
     <section class="section contact" id="contact">
       <div class="container">
         <header class="section__head reveal">
-          <span class="section__index">06</span>
+          <span class="section__index">07</span>
           <h2 class="section__title">Contact</h2>
         </header>
         <p class="contact__lede reveal">
@@ -582,6 +604,8 @@
     </div>
   </div>
 
+  <script src="blog/posts.js"></script>
+  <script src="js/blog.js"></script>
   <script src="js/main.js"></script>
   <script src="js/pong.js" defer></script>
 </body>

@@ -225,6 +225,7 @@ h1, h2, h3 {
 .hero__media {
   width: min(100%, clamp(17rem, 58vw, 39.5rem));
   margin-bottom: 2rem;
+  margin-inline: auto;
 }
 
 .hero__media video,
@@ -254,7 +255,6 @@ h1, h2, h3 {
 }
 
 .hero__intro {
-  max-width: 34em;
   margin: 0 0 2.5rem;
   font-size: clamp(1.1rem, 2.2vw, 1.3rem);
   line-height: 1.6;
@@ -810,6 +810,185 @@ h1, h2, h3 {
   .project__intro { position: static; }
   .project__client { margin-bottom: 0.75rem; }
 }
+
+/* ---------- Blog (overview cards) ---------- */
+
+.blog { border-top: 1px solid var(--line); }
+
+.blog__lede {
+  max-width: 40em;
+  margin: 0 0 clamp(2rem, 5vw, 2.75rem);
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+}
+
+.blog__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  gap: 1.25rem;
+}
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  color: inherit;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.blog-card:hover {
+  text-decoration: none;
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.blog-card__media {
+  display: block;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+.blog-card__media img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.blog-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  flex: 1;
+  padding: 1.2rem 1.3rem 1.4rem;
+}
+
+.blog-card__meta {
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.blog-card__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.blog-card__intro {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.blog-card__more {
+  margin-top: auto;
+  padding-top: 0.3rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-ink);
+}
+
+.blog__all {
+  margin: clamp(1.75rem, 4vw, 2.5rem) 0 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* ---------- Blog post (reading page) ---------- */
+
+.post {
+  max-width: 46rem;
+  padding-top: calc(var(--nav-height) + clamp(2rem, 5vw, 3.5rem));
+  padding-bottom: clamp(3.5rem, 8vw, 5.5rem);
+}
+
+.post__back {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+.post__back:hover { color: var(--accent-ink); }
+
+.post__meta {
+  margin: 0 0 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+}
+
+.post__title {
+  font-size: clamp(2rem, 4.5vw, 2.9rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.1rem;
+}
+
+.post__intro {
+  margin: 0 0 clamp(1.75rem, 4vw, 2.5rem);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.2rem, 2.4vw, 1.45rem);
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.post__cover {
+  margin: 0 0 clamp(1.75rem, 4vw, 2.5rem);
+}
+.post__cover img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.post__body {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--ink-soft);
+}
+.post__body p { margin: 0 0 1.3em; }
+.post__body p:last-child { margin-bottom: 0; }
+.post__body strong { color: var(--ink); }
+.post__body h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--ink);
+  margin: 2em 0 0.6em;
+}
+.post__body ul { margin: 0 0 1.3em; padding-left: 1.2em; }
+.post__body li { margin: 0 0 0.5em; }
+.post__body blockquote {
+  margin: 1.6em 0;
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--accent);
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.post__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: clamp(2.5rem, 6vw, 3.5rem);
+  padding-top: clamp(1.75rem, 4vw, 2.5rem);
+  border-top: 1px solid var(--line);
+}
+
+.post__back-foot { color: #8B929B; }
+.post__back-foot:hover { color: #EDEEEA; }
 
 /* ---------- Contact (dark band) ---------- */
 
