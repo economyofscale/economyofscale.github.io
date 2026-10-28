@@ -1178,6 +1178,22 @@ h1, h2, h3 {
 }
 .gb__close:hover { color: #F6F6F3; }
 
+/* Phones: the pop-up fills the screen, with a thumb-sized close button. */
+@media (max-width: 767px) {
+  .gb { padding: 0; }
+  .gb__panel {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    border: 0;
+    border-radius: 0;
+    padding: 0.5rem 0.5rem max(0.5rem, env(safe-area-inset-bottom));
+    padding-top: max(0.5rem, env(safe-area-inset-top));
+  }
+  .gb__bar { margin-bottom: 0.4rem; }
+  .gb__close { font-size: 2rem; min-width: 44px; min-height: 44px; }
+}
+
 .gb__frame {
   flex: 1;
   min-height: 0;

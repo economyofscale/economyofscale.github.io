@@ -15,8 +15,14 @@
   }
 
   function open() {
-    frame.src = "gbexmp/";
     modal.hidden = false;
+    // Load the handheld only once the pop-up has a size: a frame inside a
+    // hidden pop-up gets a 0 x 0 viewport, which phone browsers handle badly.
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        if (!modal.hidden) frame.src = "gbexmp/";
+      });
+    });
     document.body.style.overflow = "hidden";
     document.addEventListener("keydown", onKeyDown);
     closeBtn.focus();
