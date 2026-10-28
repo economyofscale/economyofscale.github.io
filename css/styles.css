@@ -1052,6 +1052,9 @@ h1, h2, h3 {
 }
 .footer__egg:hover { color: #EDEEEA; }
 
+.footer__eggs { display: flex; gap: 1.25rem; align-items: center; }
+a.footer__egg { text-decoration: none; }
+
 /* ---------- Pong (easter egg) ---------- */
 
 .pong {

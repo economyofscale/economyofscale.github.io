@@ -1,0 +1,26 @@
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; height: 100%; overflow: hidden; background: #E4E4E2;
+  font-family: Inter, system-ui, sans-serif; color: #2B2B2E;
+  -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent; overscroll-behavior: none;
+}
+.m-stage {
+  position: fixed; inset: 0; overflow: hidden; touch-action: none;
+  background: radial-gradient(ellipse at 50% 40%, #FFFFFF 0%, #EDEDEB 42%, #D5D5D2 100%);
+}
+#view { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
+.m-hint {
+  position: absolute; left: 50%; transform: translateX(-50%);
+  bottom: calc(16px + env(safe-area-inset-bottom)); max-width: calc(100% - 32px);
+  padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,.85);
+  font-size: 13px; line-height: 18px; color: #45454A; text-align: center; pointer-events: none;
+}
+.m-toast {
+  position: absolute; left: 50%; top: calc(16px + env(safe-area-inset-top));
+  transform: translate(-50%, -8px); opacity: 0; transition: opacity .2s, transform .2s;
+  padding: 8px 16px; border-radius: 999px; background: #2B2B2E; color: #FFFFFF;
+  font: 11px 'Press Start 2P', monospace; letter-spacing: 1px; pointer-events: none;
+}
+.m-toast.show { opacity: 1; transform: translate(-50%, 0); }
+@media (prefers-reduced-motion: reduce) { .m-toast { transition: none; } }

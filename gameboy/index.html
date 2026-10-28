@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Empire Strikes Back - Handheld</title>
+<script>
+  // Phones go to the touch version (add ?desktop to the URL to stay here)
+  if (!/[?&]desktop/.test(location.search) && window.matchMedia && matchMedia('(pointer: coarse)').matches && Math.min(screen.width, screen.height) < 768) {
+    location.replace('mobile.html');
+  }
+</script>
+<script>
+  // ---- Configuration -------------------------------------------------
+  window.HANDHELD_CONFIG = {
+    title: 'Example Cartridge',   // printed under the screen, on the back label, passed to your game
+    accent: '#7A3E6E'        // panel accent colour (keycaps, PRESS START button)
+  };
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,600&family=Press+Start+2P&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="hh-root">
+  <div class="hh-stage" id="stage">
+    <canvas id="view" role="img" aria-label="Interactive 3D handheld console"></canvas>
+    <div class="hh-hint" id="hint"></div>
+  </div>
+  <aside class="hh-panel">
+    <div class="hh-legend">
+      <h2>CONTROLS</h2>
+      <div id="rows" class="hh-rows"></div>
+    </div>
+    <div class="hh-toggles">
+      <button type="button" class="hh-chipbtn" id="soundBtn" data-native="1"></button>
+      <button type="button" class="hh-chipbtn" id="fxBtn" data-native="1"></button>
+    </div>
+    <div class="hh-bottom">
+      <button type="button" class="hh-start" id="startBtn" data-native="1">
+        <svg width="12" height="14" viewBox="0 0 12 14" aria-hidden="true"><path d="M0 0l12 7-12 7z" fill="#FFFFFF"/></svg>PRESS START
+      </button>
+      <button type="button" class="hh-powering" id="poweringBtn" disabled>Powering on…</button>
+      <div class="hh-playing" id="playingBox">
+        <div class="hh-viewrow">
+          <span id="viewStatus"></span>
+          <div class="hh-viewbtns">
+            <button type="button" class="hh-chipbtn hh-strong" id="cartBtn" data-native="1">Insert cartridge</button>
+            <button type="button" class="hh-chipbtn hh-strong" id="viewBtn" data-native="1"></button>
+          </div>
+        </div>
+        <button type="button" class="hh-off" id="offBtn" data-native="1">POWER OFF</button>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<script src="three.min.js"></script>
+<script src="game/game.js"></script>
+<script src="handheld.js?v=2"></script>
+<script src="ui.js"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+
+# Game Boy easter egg: never commit ROM dumps
+*.gb
+*.gbc
