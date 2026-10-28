@@ -1053,7 +1053,6 @@ h1, h2, h3 {
 .footer__egg:hover { color: #EDEEEA; }
 
 .footer__eggs { display: flex; gap: 1.25rem; align-items: center; }
-a.footer__egg { text-decoration: none; }
 
 /* ---------- Pong (easter egg) ---------- */
 
@@ -1127,6 +1126,65 @@ a.footer__egg { text-decoration: none; }
   text-align: center;
   font-size: 0.78rem;
   color: #6A717B;
+}
+
+/* ---------- Game Boy (easter egg) ---------- */
+.gb {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(20, 22, 26, 0.82);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.gb[hidden] { display: none; }
+
+.gb__panel {
+  display: flex;
+  flex-direction: column;
+  width: min(68rem, 100%);
+  height: min(46rem, 100%);
+  background: var(--ink);
+  border: 1px solid #3A4048;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.gb__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.gb__title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: #F6F6F3;
+}
+
+.gb__close {
+  background: none;
+  border: 0;
+  color: #8B929B;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.1rem 0.4rem;
+}
+.gb__close:hover { color: #F6F6F3; }
+
+.gb__frame {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  border: 0;
+  border-radius: 4px;
+  background: #E4E4E2;
 }
 
 /* ---------- Reveal animation ---------- */

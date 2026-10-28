@@ -43,6 +43,8 @@
   $('offBtn').addEventListener('click', core.powerOff);
 
   // keyboard (page-wide)
+  // inside the site's pop-up: Esc closes it
+  window.addEventListener('keydown', (e) => { if (e.key === 'Escape' && window.parent !== window) window.parent.postMessage('gameboy-close', location.origin); });
   window.addEventListener('keydown', core.onKeyDown);
   window.addEventListener('keyup', core.onKeyUp);
   window.addEventListener('blur', () => core.releaseAll());

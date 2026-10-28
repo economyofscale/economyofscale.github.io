@@ -592,7 +592,7 @@
       <p>© 2026 Daniel Fixemer</p>
       <div class="footer__eggs">
         <button class="footer__egg" id="pong-open" type="button" aria-haspopup="dialog">◦ pong</button>
-        <a class="footer__egg" href="gbexmp/" id="gameboy-open">◦ gameboy</a>
+        <button class="footer__egg" id="gameboy-open" type="button" aria-haspopup="dialog">◦ gameboy</button>
       </div>
     </div>
   </footer>
@@ -610,9 +610,21 @@
     </div>
   </div>
 
+  <!-- ============ EASTER EGG: GAME BOY ============ -->
+  <div class="gb" id="gameboy-modal" role="dialog" aria-modal="true" aria-label="Game Boy" hidden>
+    <div class="gb__panel">
+      <div class="gb__bar">
+        <span class="gb__title">Game Boy</span>
+        <button class="gb__close" id="gameboy-close" type="button" aria-label="Close Game Boy">×</button>
+      </div>
+      <iframe class="gb__frame" id="gameboy-frame" title="Game Boy" allow="autoplay; fullscreen"></iframe>
+    </div>
+  </div>
+
   <script src="blog/posts.js"></script>
   <script src="js/blog.js"></script>
   <script src="js/main.js"></script>
   <script src="js/pong.js" defer></script>
+  <script src="js/gameboy.js" defer></script>
 </body>
 </html>
