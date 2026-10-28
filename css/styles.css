@@ -1136,7 +1136,7 @@ h1, h2, h3 {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 0.5rem;
   background: rgba(20, 22, 26, 0.82);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -1146,8 +1146,8 @@ h1, h2, h3 {
 .gb__panel {
   display: flex;
   flex-direction: column;
-  width: min(68rem, 100%);
-  height: min(46rem, 100%);
+  width: min(96rem, 100%);
+  height: min(64rem, 100%);
   background: var(--ink);
   border: 1px solid #3A4048;
   border-radius: 8px;
