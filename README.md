@@ -23,13 +23,27 @@ A single-page, responsive resume site covering background, professional experien
 │   └── styles.css
 ├── js/
 │   ├── main.js                 # nav, scroll-reveal
-│   └── pong.js                 # footer easter egg
+│   ├── blog.js                 # blog section
+│   ├── pong.js                 # footer easter egg: Pong
+│   └── gameboy.js              # footer easter egg: Game Boy pop-up
+├── blog/                       # blog posts
+├── gbexmp/                     # 3D handheld shown in the Game Boy pop-up
+├── gameboy/                    # handheld variant with a cartridge picker
 └── assets/
     ├── headshot-web.jpg
     ├── cv-daniel-fixemer.pdf
     ├── FoxTransition.mp4       # hero name animation
     └── certifications/         # certification badge images
 ```
+
+## Easter eggs
+
+Two small games are tucked into the footer:
+
+- **Pong** — a canvas game against a simple AI. Move with the mouse, touch or ↑ ↓; Space or tap to start and pause.
+- **Game Boy** — a 3D handheld (Three.js) that opens in a closable pop-up. Press START on the device or the panel to play. Keys: W A S D (pad), O (A), P (B), Enter (START), Backspace (SELECT), Esc closes the pop-up. It also works by touch on phones.
+
+The handheld lives in `gbexmp/`, which loads its cartridge automatically on power-on. `gameboy/` is the same handheld with an "Insert cartridge" button for choosing a cartridge yourself; it is not linked from the footer yet and is intended for a future *Private Projects* section.
 
 ## Local development
 
